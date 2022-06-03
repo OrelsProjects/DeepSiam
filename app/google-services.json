@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "847566843382",
+    "project_id": "deepsiamoffers",
+    "storage_bucket": "deepsiamoffers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847566843382:android:065cfa30e795399fe22bd7",
+        "android_client_info": {
+          "package_name": "com.orels.deepsiam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847566843382-6qf41o0est1dcepk8128jmj4an232fbe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.orels.deepsiam",
+            "certificate_hash": "5d38aa8ba000b31646d0e7ec0238c1d9bf21eb4f"
+          }
+        },
+        {
+          "client_id": "847566843382-lk00n5dbstmco8thkp0fsg8bduukgbv4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOWfGmfqaN4OMAr5tACSs2L1eTyX4Onj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847566843382-lk00n5dbstmco8thkp0fsg8bduukgbv4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

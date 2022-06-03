@@ -72,9 +72,11 @@ fun MainScreenAdmin(
                 Text(text = stringResource(R.string.notification_content))
             },
         )
+//        Spacer(modifier = Modifier.weight(1f))
         Button(
             onClick = { viewModel.sendNotification() },
             modifier = Modifier
+                .align(Alignment.CenterHorizontally),
 //                .align()
         ) {
             Text(stringResource(R.string.send_notification))

@@ -10,4 +10,16 @@ import javax.inject.Inject
 @HiltViewModel
 class MainScreenAdminViewModel @Inject constructor(): ViewModel() {
     var state by mutableStateOf(MainScreenAdminState())
+
+    fun setTitle(title: String) {
+        state = state.copy(title = title)
+    }
+
+    fun setBody(body: String) {
+        state = state.copy(body = body)
+    }
+
+    fun sendNotification() {
+
+    }
 }

@@ -17,14 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            window.setDecorFitsSystemWindows(true)
-//        } else {
-//            @Suppress("DEPRECATION")
-//            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-//        }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             DeepSiamTheme {

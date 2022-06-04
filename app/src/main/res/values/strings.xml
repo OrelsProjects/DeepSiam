@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DeepSiam</string>
+    <string name="app_name">דיפ סיאם</string>
     <string name="notification_board_title">לוח ההתראות</string>
     <string name="notification_board_explanation">פה תוכל לשלוח התראה לכלל המשתמשים</string>
     <string name="notification_title">כותרת ההתראה</string>

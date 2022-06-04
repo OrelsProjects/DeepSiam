@@ -24,7 +24,7 @@ class MainApplication: Application() {
         })
     }
 
-    fun registerToNotifications() {
+    private fun registerToNotifications() {
         // Enable verbose OneSignal logging to debug issues if needed.
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
         // OneSignal Initialization

@@ -13,3 +13,7 @@ interface API {
     ): SendNotificationResponse
 
 }
+
+enum class APIExceptions(name: String) {
+    EmptyBodyOrTitle("emptyBodyOrTitle")
+}

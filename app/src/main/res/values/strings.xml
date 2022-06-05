@@ -5,4 +5,8 @@
     <string name="notification_title">כותרת ההתראה</string>
     <string name="notification_content">הסבר ההתראה</string>
     <string name="send_notification">שלח התראה!</string>
+    <string name="notification_sent_successfully">ההתראה נשלחה בהצלחה!</string>
+    <string name="thank_you">תודה</string>
+    <string name="error_message_empty_body_title">צריך למלא את תיאור ההתראה ואת הכותרת שלה</string>
+    <string name="message_taking_care_of_it">מטפל בזה</string>
 </resources>

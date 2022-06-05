@@ -8,8 +8,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.LayoutDirection
 import com.orels.deepsiam.presentation.NavGraphs
 import com.orels.deepsiam.ui.theme.DeepSiamTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
@@ -27,7 +30,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.secondary
                 ) {
-                    DestinationsNavHost(navGraph = NavGraphs.root)
+                    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+                        DestinationsNavHost(navGraph = NavGraphs.root)
+                    }
                 }
             }
         }

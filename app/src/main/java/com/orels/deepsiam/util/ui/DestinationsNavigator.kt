@@ -3,7 +3,7 @@ package com.orels.deepsiam.util.ui
 import androidx.navigation.NavOptionsBuilder
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-class DefaultDestinationNavigator() : DestinationsNavigator {
+class DefaultDestinationNavigator : DestinationsNavigator {
     override fun clearBackStack(route: String): Boolean = true
 
     override fun navigate(

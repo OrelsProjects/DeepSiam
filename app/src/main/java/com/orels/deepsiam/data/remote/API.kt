@@ -15,5 +15,6 @@ interface API {
 }
 
 enum class APIExceptions(name: String) {
-    EmptyBodyOrTitle("emptyBodyOrTitle")
+    EmptyBodyOrTitle("emptyBodyOrTitle"),
+    UnknownError("unknownError")
 }

@@ -27,28 +27,43 @@ class MainScreenAdminViewModel @Inject constructor(
         state = state.copy(body = body)
     }
 
+    private fun resetState(
+        isLoading: Boolean = false,
+        error: APIExceptions? = null,
+        isNotificationSent: Boolean = false,
+        title: String = "",
+        body: String = ""
+    ) {
+        state = state.copy(
+            isLoading = isLoading,
+            error = error,
+            isNotificationSent = isNotificationSent,
+            title = title,
+            body = body
+        )
+    }
+
     fun sendNotification() {
-        state = state.copy(isLoading = true, error = null, isNotificationSent = false)
-        val title = state.title
-        val body = state.body
-        state.reset()
+        resetState(isLoading = true, title = state.title, body = state.body)
         viewModelScope.launch {
             try {
                 val response =
                     api.sendNotification(
                         SendNotificationBody(
-                            title = title,
-                            body = body
+                            title = state.title,
+                            body = state.body
                         )
                     )
                 if (response.ok) {
-                    state = state.copy(isLoading = false, isNotificationSent = true)
+                    resetState(isNotificationSent = true)
                 }
             } catch (exception: HttpException) {
                 when (exception.code()) {
                     400 -> {
-                        state =
-                            state.copy(error = APIExceptions.EmptyBodyOrTitle, isLoading = false)
+                        resetState(error = APIExceptions.EmptyBodyOrTitle, title = state.title, body = state.body)
+                    }
+                    else -> {
+                        resetState(error = APIExceptions.UnknownError, title = state.title, body = state.body)
                     }
                 }
             }

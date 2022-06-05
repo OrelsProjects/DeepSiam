@@ -1,6 +1,7 @@
 package com.orels.deepsiam.presentation.mainscreen_admin
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -9,6 +10,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
@@ -38,9 +40,11 @@ fun MainScreenAdmin(
         }
     }
     Box(
-        modifier = Modifier.zIndex(2f)
+        modifier = Modifier
+            .zIndex(2f)
             .fillMaxSize(),
-        contentAlignment = Alignment.BottomCenter) {
+        contentAlignment = Alignment.BottomCenter
+    ) {
         if (state.error != null) {
             when (state.error) {
                 APIExceptions.EmptyBodyOrTitle -> {
@@ -51,7 +55,14 @@ fun MainScreenAdmin(
                         actionLabel = stringResource(R.string.message_taking_care_of_it)
                     )
                 }
-                else -> {}
+                else -> {
+                    SnackbarScreen(
+                        message = stringResource(R.string.error_unknown),
+                        duration = SnackbarDuration.Long,
+                        withDismissAction = true,
+                        actionLabel = stringResource(R.string.retry)
+                    )
+                }
             }
         } else if (state.isNotificationSent) {
             SnackbarScreen(
@@ -103,6 +114,22 @@ fun MainScreenAdmin(
                 Text(text = stringResource(R.string.notification_content))
             },
         )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+        ) {
+            Text(
+                modifier = Modifier
+                    .clickable {
+                        viewModel.setTitle("")
+                        viewModel.setBody("")
+                    },
+                text = stringResource(R.string.clear),
+                style = MaterialTheme.typography.bodySmall,
+                textAlign = TextAlign.Start,
+                color = MaterialTheme.colorScheme.error
+            )
+        }
         Button(
             onClick = {
                 viewModel.sendNotification()

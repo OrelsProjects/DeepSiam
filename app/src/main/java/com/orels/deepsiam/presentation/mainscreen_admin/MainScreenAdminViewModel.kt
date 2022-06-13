@@ -5,9 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.orels.deepsiam.data.dto.Notification
 import com.orels.deepsiam.data.remote.API
 import com.orels.deepsiam.data.remote.APIExceptions
 import com.orels.deepsiam.data.remote.dto.SendNotificationBody
+import com.orels.deepsiam.data.remote.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -15,8 +17,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainScreenAdminViewModel @Inject constructor(
-    private val api: API
-) : ViewModel() {
+    private val api: API,
+    private val repository: Repository
+    ) : ViewModel() {
     var state by mutableStateOf(MainScreenAdminState())
 
     fun setTitle(title: String) {
@@ -55,6 +58,7 @@ class MainScreenAdminViewModel @Inject constructor(
                         )
                     )
                 if (response.ok) {
+                    repository.saveNotification(notification = Notification("", state.title, state.body))
                     resetState(isNotificationSent = true)
                 }
             } catch (exception: HttpException) {

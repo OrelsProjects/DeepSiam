@@ -21,7 +21,7 @@ import kotlin.random.Random
 class MessageService: FirebaseMessagingService() {
 
     companion object {
-         var sharedPref: SharedPreferences? = null
+         private var sharedPref: SharedPreferences? = null
 
         var token: String?
             get() {
@@ -51,7 +51,7 @@ class MessageService: FirebaseMessagingService() {
         val notification = NotificationCompat.Builder(this, channelId)
             .setContentTitle(message.data["title"])
             .setContentText(message.data["message"])
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.drawable.deep)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
             .build()
@@ -61,7 +61,7 @@ class MessageService: FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        // ToDo: Update token in db
+        MessageService.token = token
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(notificationManager: NotificationManager) {
